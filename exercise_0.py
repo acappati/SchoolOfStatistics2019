@@ -68,6 +68,7 @@ totPDF.plotOn(xframe, ROOT.RooFit.Components("backgroundPDF"), ROOT.RooFit.LineS
 
 #Draw the results
 c1 = ROOT.TCanvas()
+c1.cd()
 xframe.Draw()
 c1.SaveAs("exercise_0.png")
 
@@ -77,9 +78,9 @@ getattr(ws,'import')(dataset)
 getattr(ws,'import')(totPDF)
 
 fOutput = ROOT.TFile("Workspace_mumufit.root","RECREATE")
+fOutput.cd()
 ws.Write()
-fOutput.Write()
 fOutput.Close()
-
+del ws #delete ws pointer
 
 
