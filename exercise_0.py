@@ -1,7 +1,12 @@
 #import the root libraries
 import ROOT
 
-fInput  = ROOT.TFile('DataSet_lowstat.root')
+fullStat = True
+
+if(fullStat) : 
+    fInput  = ROOT.TFile('DataSet.root')
+else :
+    fInput  = ROOT.TFile('DataSet_lowstat.root')
 dataset = fInput.Get('data')
 
 #The observable
@@ -33,7 +38,10 @@ Nbkg  = ROOT.RooRealVar("Nbkg","The bkg events",5000.,0.1,50000.)
 #Lowstat sample has 0.64 pb-1
 #Fullstat sample has 37 pb-1
 eff_psi   = ROOT.RooRealVar("eff_psi",  "The psi efficiency",0.75,0.00001,1.)
-lumi_psi  = ROOT.RooRealVar("lumi_psi", "The CMS luminosity",0.64,0.00001,50.,"pb-1")
+if(fullStat):
+    lumi_psi  = ROOT.RooRealVar("lumi_psi", "The CMS luminosity",37.,0.00001,100.,"pb-1")
+else:
+    lumi_psi  = ROOT.RooRealVar("lumi_psi", "The CMS luminosity",0.64,0.00001,50.,"pb-1")
 cross_psi = ROOT.RooRealVar("cross_psi","The psi xsec",3.,0.,40.,"pb")
 
 #Now define the number of psi events
