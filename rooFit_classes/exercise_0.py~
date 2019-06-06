@@ -1,0 +1,3 @@
+import ROOT
+
+fInput = ROOT.TFile('DataSet_lowstat.root')
