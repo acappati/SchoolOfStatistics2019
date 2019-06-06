@@ -4,10 +4,10 @@ import argparse
 
 
 
-fIn      = ROOT.TFile("notebooks/data/Higgs_data.root")
+fIn      = ROOT.TFile("Higgs_data.root")
 tree_sig = fIn.Get("sig_tree")
 tree_bkg = fIn.Get("bkg_tree")
-fOut     = ROOT.TFile("notebooks/data/output.root","RECREATE")
+fOut     = ROOT.TFile("output.root","RECREATE")
 
 
 ROOT.TMVA.Tools.Instance()
